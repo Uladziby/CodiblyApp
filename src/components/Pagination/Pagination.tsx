@@ -1,7 +1,9 @@
 /** @format */
 
-import { StyledContainer } from "./Pagination.styles";
+import { StyledButton, StyledContainer } from "./Pagination.styles";
 import { IPaginationProps } from "./type";
+import { ReactComponent as IconRight } from "../../assets/arrow_right.svg";
+import { ReactComponent as IconLeft } from "../../assets/arrow_left.svg";
 
 export const Pagination = ({
 	onChangePageHandler,
@@ -18,9 +20,13 @@ export const Pagination = ({
 	};
 	return (
 		<StyledContainer>
-			<button onClick={onChangePagePrev}>prev</button>
+			<StyledButton onClick={onChangePagePrev}>
+				<IconLeft />
+			</StyledButton>
 			<div>{currentPage}</div>
-			<button onClick={onChangePageNext}>next</button>
+			<StyledButton onClick={onChangePageNext}>
+				<IconRight />
+			</StyledButton>
 		</StyledContainer>
 	);
 };

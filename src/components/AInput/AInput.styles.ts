@@ -4,8 +4,7 @@ import styled from "styled-components";
 
 export const StyledInput = styled.input<{ hasError?: boolean }>`
 	padding: 12px 15px;
-	width: 343px;
-	height: 48px;
+	height: 20px;
 	margin: 8px 0;
 	color: gray;
 

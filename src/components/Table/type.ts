@@ -3,7 +3,7 @@
 export interface ITableProps {
 	items: ITableItems[] | null;
 	className?: string;
-	onShowModalHandler: () => void;
+	onShowModalHandler: (id: number) => void;
 }
 
 export interface ITableItems {

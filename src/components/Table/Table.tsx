@@ -16,7 +16,7 @@ export const Table = ({ className, items, onShowModalHandler }: ITableProps) => 
 			<tbody>
 				{items ? (
 					items.map(({ id, name, color, value, year }, index) => (
-						<StyledRow key={id} background={color} onClick={onShowModalHandler}>
+						<StyledRow key={id} background={color} onClick={() => onShowModalHandler(id)}>
 							<StyledCell>{id}</StyledCell>
 							<StyledCell>{name}</StyledCell>
 							<StyledCell>{year}</StyledCell>

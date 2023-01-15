@@ -1,7 +1,6 @@
 /** @format */
 
 import { ITableItems } from "./../Table/type";
-/** @format */
 
 export interface IResponseProducts {
 	page: number;
@@ -15,6 +14,7 @@ export interface IOptions {
 	page: number;
 	maxPage: number;
 	isShowModal: boolean;
+	choosedItem: ITableItems | undefined;
 }
 
 export type FormValues = {

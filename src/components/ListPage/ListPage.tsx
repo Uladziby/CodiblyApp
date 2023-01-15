@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { fetchProducts } from "../../api/api";
 import { AInput } from "../AInput/AInput";
+import { ModalContent } from "../ModalContent/ModalContent";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
 import { Pagination } from "../Pagination/Pagination";
 import { Table } from "../Table/Table";
@@ -14,11 +15,12 @@ import { filterProducts } from "./utils";
 
 export const ListPage = () => {
 	const [products, setProducts] = useState<ITableItems[]>();
-	const [filteredProducts, setFilteredProducts] = useState<ITableItems[]>();
+	//const [visibleItems, setVisibleItems] = useState<ITableItems[]>();
 	const [options, setOptions] = useState<IOptions>({
 		page: 1,
 		maxPage: 1,
 		isShowModal: false,
+		choosedItem: { id: 0, year: 0, value: "", color: "", name: "" },
 	});
 
 	const { control, watch } = useForm<FormValues>();
@@ -41,10 +43,18 @@ export const ListPage = () => {
 		}));
 	};
 
-	const onShowModalHandler = () => {
+	const onShowModalHandler = (id: number) => {
 		setOptions((prevState) => ({
 			...prevState,
 			isShowModal: !prevState.isShowModal,
+			choosedItem: filterProducts(id, products!)[0],
+		}));
+	};
+
+	const onCloseHandler = () => {
+		setOptions((prevState) => ({
+			...prevState,
+			isShowModal: false,
 		}));
 	};
 
@@ -68,10 +78,8 @@ export const ListPage = () => {
 				/>
 			</StyledContainer>
 			{options.isShowModal && (
-				<ModalWindow onCloseHandler={onShowModalHandler}>
-					{products?.map((elem) => {
-						return <div key={elem.id}>{elem.value}</div>;
-					})}
+				<ModalWindow onCloseHandler={onCloseHandler}>
+					<ModalContent {...options.choosedItem!} />
 				</ModalWindow>
 			)}
 		</>
