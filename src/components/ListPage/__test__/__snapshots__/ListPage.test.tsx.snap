@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListPage snapshot 1`] = `
+<div
+  class="sc-hBxehG kJvEjx"
+  data-testid="listPage"
+>
+  <form>
+    <div
+      class="sc-gswNZR gSPVJN"
+    >
+      <div
+        class="sc-dkrFOg dYQiNc"
+      >
+        <input
+          class="sc-bcXHqe bbDzJC"
+          id="id"
+          name="id"
+          placeholder="Type your id"
+          type="number"
+          value=""
+        />
+      </div>
+    </div>
+  </form>
+  <table
+    class="sc-csuSiG cCQjHr"
+  >
+    <thead>
+      <tr
+        class="sc-eDWCr sc-bqWxrE fBUKkK hEvhnk"
+      >
+        <th
+          class="sc-ksBlkl lhBUfD"
+        >
+          Id
+        </th>
+        <th
+          class="sc-ksBlkl lhBUfD"
+        >
+          Name
+        </th>
+        <th
+          class="sc-ksBlkl lhBUfD"
+        >
+          Year
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        class="sc-eDWCr hCJLul"
+      >
+        <td
+          class="sc-ksBlkl lhBUfD"
+        >
+          List of product is an empty
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="sc-kDvujY essvcN"
+  >
+    <button
+      class="sc-ipEyDJ ldiATk"
+    >
+      <svg>
+        arrow_left.svg
+      </svg>
+    </button>
+    <div>
+      1
+    </div>
+    <button
+      class="sc-ipEyDJ ldiATk"
+    >
+      <svg>
+        arrow_right.svg
+      </svg>
+    </button>
+  </div>
+</div>
+`;

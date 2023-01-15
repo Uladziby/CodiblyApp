@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modalWindow snapshot 1`] = `
+<div
+  class="sc-bcXHqe cuwjra"
+  data-testid="modalWindow"
+>
+  <div
+    class="sc-gswNZR eFkVuX"
+  >
+    <div
+      class="sc-dkrFOg bJSqmQ"
+    >
+      <button
+        class="sc-jSUZER bEElBe"
+        data-testid="modalCloseButton"
+      >
+        <svg>
+          clear.svg
+        </svg>
+      </button>
+    </div>
+    <div>
+      Portal
+    </div>
+  </div>
+</div>
+`;
