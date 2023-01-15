@@ -1,22 +1,24 @@
 /** @format */
 
+import { IResponseProducts } from "../components/ListPage/type";
+
 const BASE_URL = "https://reqres.in/api/products";
 
-export const baseFetch = (url: string, options?: RequestInit) =>
+const baseFetch = (url: string, options?: RequestInit) =>
 	fetch(url, options).then(async (response: Response) => {
-		let data;
-		try {
-			data = await response.json();
+		if (response.ok) {
+			const data = await response.json();
 			return data;
-		} catch (error) {
-			console.log(error);
-		}
-
-		if (!response.ok) {
-			return Promise.reject(data);
+		} else {
+			if (response.status === 404) {
+				return Promise.reject("Resource not found");
+			}
+			if (response.status === 500) {
+				return Promise.reject("Server error");
+			}
 		}
 	});
 
-export const fetchProducts = (page: number) => {
-	return baseFetch(`${BASE_URL}?page=${page}&per_page=5}`);
+export const fetchProducts = (page: number): Promise<IResponseProducts> => {
+	return baseFetch(`${BASE_URL}?page=${page}&per_page=5`);
 };

@@ -2,14 +2,8 @@
 
 import { MouseEvent } from "react";
 import ReactDOM from "react-dom";
-import {
-	BackButton,
-	CloseButton,
-	StyledContainer,
-	StyledCover,
-	StyledHeader,
-	StyledText,
-} from "./ModalWindow.styles";
+import { CloseButton, StyledContainer, StyledCover, StyledHeader } from "./ModalWindow.styles";
+import { ReactComponent as IconClose } from "../../assets/clear.svg";
 import { ModalWindowProps } from "./type";
 
 export const ModalWindow = ({ children, onCloseHandler, onBackHandler }: ModalWindowProps) => {
@@ -22,12 +16,9 @@ export const ModalWindow = ({ children, onCloseHandler, onBackHandler }: ModalWi
 	const createWrapper = () => (
 		<StyledContainer>
 			<StyledHeader>
-				{onBackHandler && (
-					<BackButton onClick={onBackHandler} data-testid="modalBackButton">
-						<StyledText>Back</StyledText>
-					</BackButton>
-				)}
-				<CloseButton onClick={onClose} data-testid="modalCloseButton"></CloseButton>
+				<CloseButton onClick={onClose} data-testid="modalCloseButton">
+					<IconClose />
+				</CloseButton>
 			</StyledHeader>
 			{children}
 		</StyledContainer>

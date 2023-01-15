@@ -3,24 +3,34 @@
 import styled from "styled-components";
 
 export const StyledInput = styled.input<{ hasError?: boolean }>`
-	padding: 12px 15px;
-	height: 20px;
-	margin: 8px 0;
-	color: gray;
+	font-family: inherit;
+	width: 100%;
+	border: 0;
+	border-bottom: 2px solid #9b9b9b;
+	outline: 0;
+	font-size: 18px;
+	padding: 7px 10px;
+	background: transparent;
+	transition: border-color 0.2s;
 
 	&:focus {
-		border: 2px solid black;
-		outline: none;
+		padding-bottom: 6px;
+		font-weight: 700;
+		border-width: 3px;
+		border-image: linear-gradient(to right, #11998e, #38ef7d);
+		border-image-slice: 1;
 	}
 
 	&:focus::placeholder {
 		color: transparent;
 	}
 `;
+
 export const StyledWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+
 export const StyledInputWrapper = styled.div`
 	position: relative;
 `;

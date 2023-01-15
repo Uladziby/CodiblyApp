@@ -50,11 +50,13 @@ export const StyledRow = styled.tr<{ isLast?: boolean; background?: string }>`
 export const StyledTableHeadings = styled(StyledRow)`
 	height: auto;
 	border: none;
-
+	background: transparent;
 	& th {
+		cursor: default;
 		height: auto;
 		font-size: 12px;
 		line-height: 12px;
+		color: black;
 	}
 `;
 

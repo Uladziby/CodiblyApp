@@ -49,9 +49,13 @@ export const BackButton = styled.button`
 
 export const CloseButton = styled.button`
 	position: absolute;
-	padding: 5px;
 	top: 16px;
 	right: 16px;
+	height: 24px;
+	width: 24px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
 
 	& svg {
 		pointer-events: none;

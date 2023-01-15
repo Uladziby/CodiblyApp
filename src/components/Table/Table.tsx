@@ -8,9 +8,9 @@ export const Table = ({ className, items, onShowModalHandler }: ITableProps) => 
 		<StyledTable className={className}>
 			<thead>
 				<StyledTableHeadings background="white">
-					<StyledCell>Id</StyledCell>
-					<StyledCell>Name</StyledCell>
-					<StyledCell>Year</StyledCell>
+					<StyledCell as={"th"}>Id</StyledCell>
+					<StyledCell as={"th"}>Name</StyledCell>
+					<StyledCell as={"th"}>Year</StyledCell>
 				</StyledTableHeadings>
 			</thead>
 			<tbody>

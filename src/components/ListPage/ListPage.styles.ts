@@ -7,4 +7,6 @@ export const StyledContainer = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	min-height: 200px;
+	font-size: 1.5rem;
 `;

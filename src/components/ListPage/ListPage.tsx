@@ -15,25 +15,32 @@ import { filterProducts } from "./utils";
 
 export const ListPage = () => {
 	const [products, setProducts] = useState<ITableItems[]>();
-	//const [visibleItems, setVisibleItems] = useState<ITableItems[]>();
 	const [options, setOptions] = useState<IOptions>({
 		page: 1,
 		maxPage: 1,
 		isShowModal: false,
 		choosedItem: { id: 0, year: 0, value: "", color: "", name: "" },
+		error: "",
 	});
 
 	const { control, watch } = useForm<FormValues>();
 	const { id } = watch();
 
 	const onUpdateTable = () => {
-		fetchProducts(options.page).then((data: IResponseProducts) => {
-			setProducts(data.data);
-			setOptions((prevState) => ({
-				...prevState,
-				maxPage: data.total_pages,
-			}));
-		});
+		fetchProducts(options.page)
+			.then((data: IResponseProducts) => {
+				setProducts(data.data);
+				setOptions((prevState) => ({
+					...prevState,
+					maxPage: data.total_pages,
+				}));
+			})
+			.catch((err) => {
+				setOptions((prevState) => ({
+					...prevState,
+					error: err,
+				}));
+			});
 	};
 
 	const onChangePageHandler = (page: number) => {
@@ -60,6 +67,7 @@ export const ListPage = () => {
 
 	useEffect(() => {
 		onUpdateTable();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [options.page]);
 
 	const visibleItems = filterProducts(id, products!);
@@ -68,9 +76,13 @@ export const ListPage = () => {
 		<>
 			<StyledContainer>
 				<form>
-					<AInput type="number" name="id" placeholder="type your id" control={control} />
+					<AInput type="number" name="id" placeholder="Type your id" control={control} />
 				</form>
-				<Table onShowModalHandler={onShowModalHandler} items={visibleItems} />
+				{options.error ? (
+					<StyledContainer>{options.error}</StyledContainer>
+				) : (
+					<Table onShowModalHandler={onShowModalHandler} items={visibleItems} />
+				)}
 				<Pagination
 					onChangePageHandler={onChangePageHandler}
 					currentPage={options.page}

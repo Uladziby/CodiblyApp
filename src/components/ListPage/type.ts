@@ -15,6 +15,7 @@ export interface IOptions {
 	maxPage: number;
 	isShowModal: boolean;
 	choosedItem: ITableItems | undefined;
+	error: string;
 }
 
 export type FormValues = {
