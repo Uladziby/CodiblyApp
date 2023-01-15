@@ -19,7 +19,7 @@ export const ListPage = () => {
 
 	const [products, setProducts] = useState<ITableItems[]>();
 	const [options, setOptions] = useState<IOptions>({
-		page: Number(searchParams.get("page")),
+		page: Number(searchParams.get("page") || 1),
 		maxPage: 1,
 		isShowModal: false,
 		choosedItem: { id: 0, year: 0, value: "", color: "", name: "" },
@@ -77,7 +77,7 @@ export const ListPage = () => {
 
 	return (
 		<>
-			<StyledContainer>
+			<StyledContainer data-testid="listPage">
 				<form>
 					<AInput type="number" name="id" placeholder="Type your id" control={control} />
 				</form>

@@ -6,7 +6,7 @@ import { CloseButton, StyledContainer, StyledCover, StyledHeader } from "./Modal
 import { ReactComponent as IconClose } from "../../assets/clear.svg";
 import { ModalWindowProps } from "./type";
 
-export const ModalWindow = ({ children, onCloseHandler, onBackHandler }: ModalWindowProps) => {
+export const ModalWindow = ({ children, onCloseHandler }: ModalWindowProps) => {
 	const onClose = (e: MouseEvent<HTMLElement>) => {
 		e.stopPropagation();
 
@@ -25,7 +25,9 @@ export const ModalWindow = ({ children, onCloseHandler, onBackHandler }: ModalWi
 	);
 
 	return ReactDOM.createPortal(
-		<StyledCover onClick={onClose}>{createWrapper()}</StyledCover>,
+		<StyledCover data-testid="modalWindow" onClick={onClose}>
+			{createWrapper()}
+		</StyledCover>,
 		document.getElementById("root") as HTMLElement
 	);
 };
