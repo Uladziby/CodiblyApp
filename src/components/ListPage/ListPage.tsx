@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useSearchParams } from "react-router-dom";
 import { fetchProducts } from "../../api/api";
 import { AInput } from "../AInput/AInput";
 import { ModalContent } from "../ModalContent/ModalContent";
@@ -14,15 +15,16 @@ import { FormValues, IOptions, IResponseProducts } from "./type";
 import { filterProducts } from "./utils";
 
 export const ListPage = () => {
+	const [searchParams, setSearchParams] = useSearchParams();
+
 	const [products, setProducts] = useState<ITableItems[]>();
 	const [options, setOptions] = useState<IOptions>({
-		page: 1,
+		page: Number(searchParams.get("page")),
 		maxPage: 1,
 		isShowModal: false,
 		choosedItem: { id: 0, year: 0, value: "", color: "", name: "" },
 		error: "",
 	});
-
 	const { control, watch } = useForm<FormValues>();
 	const { id } = watch();
 
@@ -66,6 +68,7 @@ export const ListPage = () => {
 	};
 
 	useEffect(() => {
+		setSearchParams(`page=${String(options.page)}`);
 		onUpdateTable();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [options.page]);
